@@ -1,20 +1,35 @@
-import * as React from 'react';
-import {render} from 'react-dom';
-import {Provider} from 'react-redux';
-import {HashRouter} from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { Provider } from "react-redux";
+import * as serviceWorker from "./serviceWorker";
+import "@atomic/colors/lib/styles/figma-color-pallet.css";
+import "@atomic/typography/lib/styles/fonts.css";
+import "./index.css";
 
-import store from './store';
-import App from "./components/App/AppPL";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql,
+} from "@apollo/client";
 
-/**
- * Входная точка в приложение, здесь создается корневой React-компонент и помещается в реальный DOM
- */
+const client = new ApolloClient({
+  uri: "http://localhost:9002/graphql",
+  cache: new InMemoryCache(),
+});
 
-render(
-    <Provider store={store()}>
-        <HashRouter>
-            <App/>
-        </HashRouter>
-    </Provider>,
-    document.getElementById('app')
+ReactDOM.render(
+  <React.StrictMode>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

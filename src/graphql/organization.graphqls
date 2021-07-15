@@ -1,0 +1,10 @@
+type Organization {
+  id: ID!
+  crmId: String
+  eksId: String
+  creditMark: String
+  msh: Boolean
+  mer: Boolean
+  k7m: Boolean
+  creditType: String
+}

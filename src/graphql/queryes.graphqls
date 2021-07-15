@@ -1,0 +1,5 @@
+type Query {
+    organization(id: ID):Organization
+    vehicles(count: Int):[Vehicle]
+    vehicle(id: ID):Vehicle
+}
