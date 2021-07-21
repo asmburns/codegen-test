@@ -1,22 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import "@atomic/colors/lib/styles/figma-color-pallet.css";
 import "@atomic/typography/lib/styles/fonts.css";
 import "./index.css";
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://localhost:9002/graphql",
+  uri: "/graphql",
   cache: new InMemoryCache(),
 });
 

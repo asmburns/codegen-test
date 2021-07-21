@@ -1,5 +1,5 @@
 import { TextInput, Checkbox, Grid } from "@atomic/ui";
-import React, { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
 export function PossibleCredit() {
   const [cancelReason, setCancelReason] = useState<string>("");

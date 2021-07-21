@@ -3,13 +3,13 @@ import { Header } from "@atomic/header";
 import { Shadow, Tabs } from "@atomic/ui";
 import { prop, propOr } from "ramda";
 import { useState } from "react";
-import { IItem } from "../../../app/types";
+import { TabItem } from "../../../app/types";
 import classes from "../k7m.module.css";
 import { PossibleCredit } from "./components/PossibleCredit";
 import { Procuring } from "./components/Procuring";
 import { SumPeriod } from "./components/SumPeriod";
 
-const items: IItem[] = [
+const items: TabItem[] = [
   {
     title: "Возможность кредитования",
     id: "POSS",
@@ -26,14 +26,14 @@ const items: IItem[] = [
 
 export function K7mRestrictionsComponent() {
   const [value, setValue] = useState(items[0]);
-  const onChange = (value: string) => {
-    console.log(value);
+  const onChange = (tabId: string) => {
+    console.log(tabId);
     for (let item of items) {
-      if (item.id === value) setValue(item);
+      if (item.id === tabId) setValue(item);
     }
   };
 
-  const switchTabs = (id: String) => {
+  const switchTabs = (id: string) => {
     switch (id) {
       case "POSS":
         return <PossibleCredit></PossibleCredit>;

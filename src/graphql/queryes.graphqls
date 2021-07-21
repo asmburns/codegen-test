@@ -1,5 +1,4 @@
 type Query {
+    userAuthorities: UserAuthorities
     organization(id: ID):Organization
-    vehicles(count: Int):[Vehicle]
-    vehicle(id: ID):Vehicle
 }

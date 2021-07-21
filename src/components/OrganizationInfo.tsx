@@ -1,10 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
-import React, { SyntheticEvent, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { SyntheticEvent, useState } from "react";
 import { OrganizationType } from "../app/types";
 import { Checkbox, CollapsePanel, Grid, Loader } from "@atomic/ui";
 import classes from "./OrganizationInfo.module.css";
-import { or } from "ramda";
+import { noop } from "@atomic/utils";
 
 const GET_ORGANIZATION = gql`
   query getOrganization($id: ID!) {
@@ -51,7 +50,7 @@ export function OrganizationInfo(props: OrgInfoProps) {
 
   const clickHandler = (e: SyntheticEvent) => {
     e.preventDefault();
-    setOpened((opened) => !opened);
+    setOpened(!opened);
   };
 
   const content = (
@@ -70,17 +69,17 @@ export function OrganizationInfo(props: OrgInfoProps) {
       <Grid rowAlign="start">{organization.creditMark}</Grid>
       <Grid rowAlign="end">Принадлежность к МЭР:</Grid>
       <Grid rowAlign="start">
-        <Checkbox onChange={() => {}} checked={organization.mer} disabled />
+        <Checkbox onChange={noop} checked={organization.mer} disabled />
       </Grid>
       <Grid rowAlign="end">Принадлежность к МCХ:</Grid>
       <Grid rowAlign="start">
-        <Checkbox onChange={() => {}} checked={organization.msh} disabled />
+        <Checkbox onChange={noop} checked={organization.msh} disabled />
       </Grid>
       <Grid rowAlign="end">Тип онлайн кредитования:</Grid>
       <Grid rowAlign="start">{organization.creditType}</Grid>
       <Grid rowAlign="end">Предложение К7М/ПЛ:</Grid>
       <Grid rowAlign="start">
-        <Checkbox onChange={() => {}} checked={organization.k7m} disabled />
+        <Checkbox onChange={noop} checked={organization.k7m} disabled />
       </Grid>
     </Grid>
   );

@@ -1,0 +1,16 @@
+type UserRight {
+    name: String
+}
+
+type UserRole {
+    id: ID!
+    code: String
+    name: String
+    description: String
+    archive: Boolean
+}
+
+type UserAuthorities {
+    roles: [UserRole]
+    rights: [UserRight]
+}

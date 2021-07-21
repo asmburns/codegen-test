@@ -1,15 +1,29 @@
 export interface OrganizationType {
-  id: String;
-  crmId: String;
-  eksId: String;
-  creditMark: String;
+  id: string;
+  crmId: string;
+  eksId: string;
+  creditMark: string;
   msh: boolean;
   mer: boolean;
   k7m: boolean;
-  creditType: String;
+  creditType: string;
 }
 
-export interface IItem {
+export interface TabItem {
   id: string;
   title: string;
+}
+
+export interface TableHeaderItem {
+  title: string;
+}
+
+export interface PriceDataK7M {
+  type: string;
+  strat: boolean;
+  norm: number;
+  fact: number;
+  kot: number;
+  period_start: Date;
+  period_end: Date;
 }

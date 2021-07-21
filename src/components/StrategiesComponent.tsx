@@ -1,18 +1,12 @@
-import { gql, useQuery } from "@apollo/client";
-import React, { SyntheticEvent, useState } from "react";
-import { useParams } from "react-router";
-import { IItem, OrganizationType } from "../app/types";
-import { OrganizationInfo } from "./OrganizationInfo";
-import { Page } from "@atomic/page";
-import { PageHeader } from "@atomic/page-header";
-import { CollapsePanel, Grid, Tabs } from "@atomic/ui";
-import { always, find, ifElse, pipe, prop, propEq, propOr } from "ramda";
-import { isVoid } from "@atomic/utils";
+import { SyntheticEvent, useState } from "react";
+import { TabItem } from "../app/types";
+import { CollapsePanel, Tabs } from "@atomic/ui";
+import { prop, propOr } from "ramda";
 import classes from "./StrategiesComponent.module.css";
 import { K7mComponent } from "./k7m/K7mComponent";
 import { IrPlComponent } from "./irpl/IrPlComponent";
 
-const items: IItem[] = [
+const items: TabItem[] = [
   {
     title: "К7М",
     id: "K7M",
@@ -30,16 +24,16 @@ interface StrategyProps {
 export function StrategiesComponent(props: StrategyProps) {
   const [opened, setOpened] = useState(true);
   const [value, setValue] = useState(items[0]);
-  const onChange = (value: string) => {
-    console.log(value);
+  const onChange = (tabId: string) => {
+    console.log(tabId);
     for (let item of items) {
-      if (item.id === value) setValue(item);
+      if (item.id === tabId) setValue(item);
     }
   };
 
   const clickHandler = (e: SyntheticEvent) => {
     e.preventDefault();
-    setOpened((opened) => !opened);
+    setOpened(!opened);
   };
 
   const switchTabs = (itemId: string) => {
