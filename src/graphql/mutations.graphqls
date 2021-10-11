@@ -1,0 +1,5 @@
+type Mutation {
+
+    updateClientRestrictionK7M(clientRestrictionK7M: ClientRestrictionK7MInput): ClientRestrictionK7M
+
+}

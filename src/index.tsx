@@ -5,21 +5,25 @@ import * as serviceWorker from "./serviceWorker";
 import "@atomic/colors/lib/styles/figma-color-pallet.css";
 import "@atomic/typography/lib/styles/fonts.css";
 import "./index.css";
-
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {ApolloClient, ApolloProvider} from "@apollo/client";
+import {cache} from "./app/apolloCache";
+import {ROUTE_BASENAME} from "./routes";
+import {BrowserRouter as Router} from "react-router-dom";
 
 const client = new ApolloClient({
-  uri: "/graphql",
-  cache: new InMemoryCache(),
+    uri: process.env.REACT_APP_API_URL,
+    cache,
 });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+    <React.StrictMode>
+        <ApolloProvider client={client}>
+            <Router basename={ROUTE_BASENAME}>
+                <App/>
+            </Router>
+        </ApolloProvider>
+    </React.StrictMode>,
+    document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

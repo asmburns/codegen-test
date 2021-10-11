@@ -1,0 +1,8 @@
+query getRejectionReasons{
+    rejectionReasons {
+        code,
+        name,
+        description,
+        sortNumber
+    }
+}

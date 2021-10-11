@@ -1,0 +1,47 @@
+mutation updateClientRestrictionK7M($id: String,
+    $clientId: String,
+    $availabilityAll: Boolean,
+    $withPledge: Boolean,
+    $availabilityMer: Boolean,
+    $availabilityMsh: Boolean,
+    $surDelayCode: String,
+    $pledgeDelayCode: String,
+    $clientRejectionReasons: [ClientRejectionReasonInput],
+    $productRestrictions: [ProductRestrictionK7MInput]
+){
+    updateClientRestrictionK7M(
+        clientRestrictionK7M: {
+            id: $id,
+            clientId: $clientId,
+            availabilityAll: $availabilityAll,
+            withPledge: $withPledge,
+            availabilityMer: $availabilityMer,
+            availabilityMsh: $availabilityMsh,
+            surDelayCode: $surDelayCode,
+            pledgeDelayCode: $pledgeDelayCode,
+            clientRejectionReasons: $clientRejectionReasons,
+            productRestrictions: $productRestrictions
+        }
+    ){
+        id,
+        clientId,
+        availabilityAll,
+        withPledge,
+        availabilityMer,
+        availabilityMsh,
+        surDelayCode,
+        pledgeDelayCode,
+        clientRejectionReasons{
+            id,
+            clientId,
+            rejectionReasonCode,
+            rejectionComment
+        },
+        productRestrictions{
+            clientId,
+            productCode,
+            amount,
+            period
+        }
+    }
+}

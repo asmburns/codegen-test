@@ -1,0 +1,24 @@
+query getRestrictions($clientId: String){
+    clientRestrictionK7M(clientId: $clientId){
+        id,
+        clientId,
+        availabilityAll,
+        withPledge,
+        availabilityMsh,
+        availabilityMer,
+        surDelayCode,
+        pledgeDelayCode,
+        clientRejectionReasons{
+            id,
+            clientId,
+            rejectionReasonCode,
+            rejectionComment
+        },
+        productRestrictions{
+            clientId,
+            productCode,
+            amount,
+            period
+        }
+    }
+}

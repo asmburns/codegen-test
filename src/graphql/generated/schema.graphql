@@ -1,0 +1,107 @@
+type ApplicationProperties {
+  uiDebugMode: Boolean
+}
+
+type Client {
+  id: ID!
+  crmId: String
+  epkId: String
+  creditMark: String
+  msh: Boolean
+  mer: Boolean
+  k7m: Boolean
+  creditType: String
+  name: String
+}
+
+type ClientRejectionReason {
+  id: ID!
+  clientId: String
+  rejectionReasonCode: String
+  rejectionComment: String
+}
+
+input ClientRejectionReasonInput {
+  rejectionReasonCode: String
+  rejectionComment: String
+}
+
+type RejectionReason {
+  code: String
+  name: String
+  description: String
+  sortNumber: Int
+}
+
+type ClientRestrictionK7M {
+  id: String
+  clientId: String
+  availabilityAll: Boolean
+  withPledge: Boolean
+  availabilityMsh: Boolean
+  availabilityMer: Boolean
+  surDelayCode: String
+  pledgeDelayCode: String
+  clientRejectionReasons: [ClientRejectionReason]
+  productRestrictions: [ProductRestrictionK7M]
+}
+
+input ClientRestrictionK7MInput {
+  id: String
+  clientId: String
+  availabilityAll: Boolean
+  withPledge: Boolean
+  availabilityMer: Boolean
+  availabilityMsh: Boolean
+  surDelayCode: String
+  pledgeDelayCode: String
+  clientRejectionReasons: [ClientRejectionReasonInput]
+  productRestrictions: [ProductRestrictionK7MInput]
+}
+
+type Mutation {
+  updateClientRestrictionK7M(clientRestrictionK7M: ClientRestrictionK7MInput): ClientRestrictionK7M
+}
+
+type ProductRestrictionK7M {
+  clientId: String
+  productCode: String
+  amount: Int
+  period: Int
+}
+
+input ProductRestrictionK7MInput {
+  productCode: String
+  amount: Int
+  period: Int
+}
+
+type Query {
+  userAuthorities: UserAuthorities
+  client(crmId: String, epkId: String, inn: String, kpp: String, ogrn: String): Client
+  applicationProperties: ApplicationProperties
+  clientRestrictionK7M(clientId: String): ClientRestrictionK7M
+  rejectionReasons: [RejectionReason]
+}
+
+type UserRight {
+  name: String
+}
+
+type UserRole {
+  id: ID!
+  code: String
+  name: String
+  description: String
+  archive: Boolean
+}
+
+type UserAuthorities {
+  roles: [UserRole]
+  rights: [UserRight]
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

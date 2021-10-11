@@ -1,0 +1,16 @@
+type ClientRejectionReason {
+    id: ID!,
+    clientId: String,
+    rejectionReasonCode: String,
+    rejectionComment : String
+}
+input ClientRejectionReasonInput {
+    rejectionReasonCode: String,
+    rejectionComment : String
+}
+type RejectionReason {
+    code: String,
+    name: String,
+    description: String,
+    sortNumber: Int
+}

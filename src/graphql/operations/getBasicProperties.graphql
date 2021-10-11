@@ -1,0 +1,15 @@
+query getBasicProperties{
+    applicationProperties {
+        uiDebugMode
+    }
+    userAuthorities {
+        roles {
+            id
+            name
+            code
+        }
+        rights {
+            name
+        }
+    }
+}

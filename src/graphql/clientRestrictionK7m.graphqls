@@ -1,0 +1,25 @@
+type ClientRestrictionK7M {
+     id: String,
+     clientId: String,
+     availabilityAll: Boolean,
+     withPledge: Boolean,
+     availabilityMsh: Boolean,
+     availabilityMer: Boolean,
+     surDelayCode: String,
+     pledgeDelayCode: String,
+     clientRejectionReasons: [ClientRejectionReason],
+     productRestrictions: [ProductRestrictionK7M]
+}
+
+input ClientRestrictionK7MInput {
+     id: String,
+     clientId: String,
+     availabilityAll: Boolean,
+     withPledge: Boolean,
+     availabilityMer: Boolean,
+     availabilityMsh: Boolean,
+     surDelayCode: String,
+     pledgeDelayCode: String,
+     clientRejectionReasons: [ClientRejectionReasonInput],
+     productRestrictions: [ProductRestrictionK7MInput]
+}

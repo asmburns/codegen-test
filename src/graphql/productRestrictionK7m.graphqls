@@ -1,0 +1,12 @@
+type ProductRestrictionK7M{
+    clientId: String,
+    productCode: String,
+    amount: Int,
+    period: Int
+}
+
+input ProductRestrictionK7MInput{
+    productCode: String,
+    amount: Int,
+    period: Int
+}

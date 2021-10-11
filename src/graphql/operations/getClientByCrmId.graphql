@@ -1,0 +1,12 @@
+query getClient($crmId:String){
+    client(crmId: $crmId) {
+        id
+        crmId
+        epkId
+        creditMark
+        msh
+        mer
+        k7m
+        creditType
+    }
+}

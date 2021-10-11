@@ -2,3 +2,18 @@
   position: relative;
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+}
+
+.App {
+  background: #e5e5e5;
+}
+
+.ukPanel {
+  background: "#fff";
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+}

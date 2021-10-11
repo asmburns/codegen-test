@@ -1,4 +1,11 @@
 type Query {
     userAuthorities: UserAuthorities
-    organization(id: ID):Organization
+    client(crmId:String,
+           epkId:String,
+           inn:String,
+           kpp:String,
+           ogrn:String):Client
+    applicationProperties: ApplicationProperties
+    clientRestrictionK7M(clientId:String): ClientRestrictionK7M
+    rejectionReasons: [RejectionReason]
 }

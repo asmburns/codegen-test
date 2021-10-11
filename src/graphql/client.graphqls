@@ -1,10 +1,11 @@
-type Organization {
+type Client {
     id: ID!,
     crmId: String,
-    eksId: String,
+    epkId: String,
     creditMark: String,
     msh: Boolean,
     mer: Boolean,
     k7m: Boolean,
-    creditType: String
+    creditType: String,
+    name: String
 }

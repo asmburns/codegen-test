@@ -1,0 +1,12 @@
+query getUserAuthorities {
+    userAuthorities {
+        roles {
+            id
+            name
+            code
+        }
+        rights {
+            name
+        }
+    }
+}
